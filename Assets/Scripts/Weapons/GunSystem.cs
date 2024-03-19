@@ -23,6 +23,7 @@ public class GunSystem : MonoBehaviour
 
     public GameObject muzzleFlash, bulletHoleGraphic;
     public TextMeshProUGUI text;
+    public AudioSource gunshot;
 
     private void Awake()
     {
@@ -67,6 +68,8 @@ public class GunSystem : MonoBehaviour
 
         Instantiate(bulletHoleGraphic, rayHit.point, Quaternion.Euler(0, 180, 0));
         Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity);
+
+        gunshot.Play();
 
         bulletsLeft--;
         Invoke("ResetShot", timeBetweenShooting);
