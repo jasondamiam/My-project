@@ -10,6 +10,8 @@ TagManager:
   - moveToEndScene
   - ItemHeal
   - RedObj
+  - bulletHit
+  - Enemy
   layers:
   - Default
   - TransparentFX

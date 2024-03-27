@@ -63,7 +63,9 @@ public class GunSystem : MonoBehaviour
             Debug.Log(rayHit.collider.name);
 
             //no enemies yet
-            if (rayHit.collider.CompareTag("Enemy")) { }
+            if (rayHit.collider.CompareTag("Enemy"))
+                rayHit.collider.GetComponent<EnemyAi>().TakeDamage(damage);
+            
         }
 
         Instantiate(bulletHoleGraphic, rayHit.point, Quaternion.Euler(0, 180, 0));
