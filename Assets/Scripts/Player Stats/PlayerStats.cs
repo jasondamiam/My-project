@@ -48,7 +48,7 @@ public class PlayerStats : MonoBehaviour
 
         if(currentHealth <= 0)
         {
-            SceneManager.LoadScene(4);
+            SceneManager.LoadScene(3);
         }
 
         if (Input.GetKeyDown(KeyCode.K))

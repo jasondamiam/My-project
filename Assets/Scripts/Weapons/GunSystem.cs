@@ -24,6 +24,7 @@ public class GunSystem : MonoBehaviour
     public GameObject muzzleFlash, bulletHoleGraphic;
     public TextMeshProUGUI text;
     public AudioSource gunshot;
+    public AudioSource reloadsound;
 
     private void Awake()
     {
@@ -62,7 +63,6 @@ public class GunSystem : MonoBehaviour
         {
             Debug.Log(rayHit.collider.name);
 
-            //no enemies yet
             if (rayHit.collider.CompareTag("Enemy"))
                 rayHit.collider.GetComponent<EnemyAi>().TakeDamage(damage);
             
@@ -83,6 +83,7 @@ public class GunSystem : MonoBehaviour
     private void Reload()
     {
         reloading = true;
+        reloadsound.Play();
         Invoke("ReloadFinished", reloadTime);
     }
     private void ReloadFinished()

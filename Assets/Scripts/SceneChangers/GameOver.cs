@@ -8,7 +8,7 @@ public class GameOver : MonoBehaviour
 
     public void respawn()
     {
-        SceneManager.LoadScene(5);
+        SceneManager.LoadScene(1);
     }
 
     public void exit()

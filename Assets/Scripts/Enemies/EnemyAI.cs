@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -22,6 +23,7 @@ public class EnemyAi : MonoBehaviour
     public float timeBetweenAttacks;
     bool alreadyAttacked;
     public GameObject projectile;
+    public AudioSource gunShot;
 
     //States
     public float sightRange, attackRange;
@@ -88,6 +90,9 @@ public class EnemyAi : MonoBehaviour
             rb.AddForce(transform.forward * 40f, ForceMode.Impulse);
             rb.AddForce(transform.up * 8f, ForceMode.Impulse);
             ///End of attack code
+            gunShot.Play();
+            
+            Destroy(rb.gameObject, 2f);
 
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
