@@ -24,6 +24,7 @@ public class EnemyAi : MonoBehaviour
     bool alreadyAttacked;
     public GameObject projectile;
     public AudioSource gunShot;
+    public AudioSource soundtrack;
 
     //States
     public float sightRange, attackRange;
@@ -44,6 +45,7 @@ public class EnemyAi : MonoBehaviour
         if (!playerInSightRange && !playerInAttackRange) Patroling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         if (playerInAttackRange && playerInSightRange) AttackPlayer();
+        if (playerInAttackRange &&  !playerInSightRange) soundtrack.Play();
     }
 
     private void Patroling()

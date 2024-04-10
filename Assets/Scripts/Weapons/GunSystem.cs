@@ -57,7 +57,7 @@ public class GunSystem : MonoBehaviour
         float x = Random.Range(-spread, spread);
         float y = Random.Range(-spread, spread);
 
-        Vector3 direction = fpsCam.transform.forward + new Vector3(x, y, 0);
+        Vector3 direction = fpsCam.transform.forward + new Vector3(0, x, y);
 
         if (Physics.Raycast(fpsCam.transform.position, direction, out rayHit, range, whatIsEnemy))
         {
@@ -68,7 +68,11 @@ public class GunSystem : MonoBehaviour
             
         }
 
-        Instantiate(bulletHoleGraphic, rayHit.point, Quaternion.Euler(0, 180, 0));
+        if(rayHit.collider != null)
+        {
+            Instantiate(bulletHoleGraphic, rayHit.point, Quaternion.Euler(0, 180, 0));
+        }
+
         Instantiate(muzzleFlash, attackPoint.position, Quaternion.identity);
 
         gunshot.Play();
